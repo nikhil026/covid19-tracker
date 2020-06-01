@@ -14,10 +14,6 @@ export const AppContext = React.createContext();
 export const ModalContext = React.createContext();
 export const ModalContentContext = React.createContext();
 
-
-
-
-
 function App() {
   const [state, dispatch] = useReducer(indexReducer, indexInitialState);
 
@@ -34,8 +30,8 @@ function App() {
 
             <Switch>
               <Route path="/" exact component={Home} />
-              <Route path="/india" exact component={India} />
-              <Route path="/country" exact component={Country} />
+              <Route path="/corona-india-statewise" exact component={India} />
+              {/* <Route path="/country" exact component={Country} /> */}
               <Route path="/country/:countryName" component={Country} />
               <Route path="/compare-countries/:countries" component={CompareCountries} />
 

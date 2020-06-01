@@ -34,17 +34,17 @@ export const fetchCountryAllData = async (countryName) => {
   }
 }
 
-export const fetchIndianData = async () => {
+export const fetchIndianStatesData = async () => {
   try {
-    if (JSON.parse(window.localStorage["IndianData"]).timeStamp + inCacheTime > new Date().getTime()) {
-      return JSON.parse(window.localStorage["IndianData"])['data'];
+    if (JSON.parse(window.localStorage["IndianStatesData"]).timeStamp + inCacheTime > new Date().getTime()) {
+      return JSON.parse(window.localStorage["IndianStatesData"])['data'];
     } else {
       throw new Error('Old')
     }
   } catch (e) {
     let result = await getAPI(`/api/covid19/india/`);
     let countryData = { data: result, timeStamp: new Date().getTime() };
-    window.localStorage.setItem("IndianData", JSON.stringify(countryData));
+    window.localStorage.setItem("IndianStatesData", JSON.stringify(countryData));
     return result;
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
+
 export const CompareCountriesBar = (props) => {
     let common = {
         barThickness: 15
@@ -37,8 +38,6 @@ export const CompareCountriesBar = (props) => {
                     }]
                 },
             }}
-
-            type='horizontalBar'
         />
     )
 }

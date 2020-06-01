@@ -1,17 +1,12 @@
+html {
+  scroll-behavior: smooth;
+}
 .App {
   font-family: 'Montserrat', sans-serif;
 }
-
-nav a.sidenav-trigger {
-  color: '#484848' !important;
-  background-color: '#000';
-}
-
-
 .no-shadows {
   box-shadow: none!important;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -19,21 +14,8 @@ nav a.sidenav-trigger {
 .active-link {
   color: #0000aa !important;
 }
-
-.country-list-table thead  > tr>th{
-  font-size: 15px;
-}
-.country-list-table tbody  > tr>td{
-  font-size: 14px;
-}
-
-.checkbox-dark-color {
-  color: '#484848';
-}
-
 .autocomplete-container > input.autocomplete {
   color: #000;
-  /* border-radius: 30px; */
   border-top: '1px solid black !important';
   padding-left: 20px;
 }
@@ -55,22 +37,7 @@ i {
   vertical-align: middle !important;
 }
 
-@media only screen and (max-width: 600px) {
 
-  .country-list-table thead  > tr>th{
-    font-size: 11px;
-  }
-  .country-list-table tbody  > tr>td{
-    font-size: 10px;
-  }
-  
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .loader {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: #282c34;
@@ -87,6 +54,122 @@ i {
   color: #61dafb;
 }
 
+
+
+table.country-list-table  {
+  width:100%;
+  position: relative;
+  table-layout: fixed;
+  height: 700px;
+}
+
+.country-list-table tbody, .country-list-table thead {
+  display:block;
+}
+.country-list-table tbody tr {
+  display:table;
+}
+
+.country-list-table tbody  {
+  height: 700px;
+}
+
+.country-list-table tbody > tr > td, .country-list-table thead > tr > th{
+  width: 170px;
+}
+.country-list-table tbody > tr > td:nth-child(1), .country-list-table thead > tr > th:nth-child(1){
+  width: 30px;
+}
+.country-list-table tbody > tr > td:nth-child(2), .country-list-table thead > tr > th:nth-child(2){
+  width: 170px;
+}
+
+.country-list-table thead > tr>th{
+  position: sticky;
+
+} 
+
+.country-list-table thead > tr {
+  position: relative;
+
+}
+
+@media  screen and (max-width: 599px){
+  .country-list-table thead > tr > th {
+    font-size: 11px;
+  }
+  .country-list-table tbody > tr > td {
+    font-size: 11px;
+  }
+  .country-list-table tbody, .country-list-table thead {
+    display:block;
+    width:100vw;
+    overflow-x:auto;
+  }
+  .country-list-table tbody tr {
+    display:table;
+    overflow-x:auto;
+    width:100vw;
+  }
+  .country-list-table thead > tr > th:nth-child(1){
+    width: 10px;
+  }
+}
+
+input[type="checkbox"] + span{
+  color: #484848 !important;
+}
+
+.spinner {
+  margin: 100px auto 0;
+  width: 70px;
+  text-align: center;
+}
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #333;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% { 
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .loader {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -94,113 +177,4 @@ i {
   to {
     transform: rotate(360deg);
   }
-}
-
-
- /* .countries-list > .collection-item:nth-child(1) {
-  font-weight: bold;  
-  padding: 15px 15px;
-  color: '#484848';
- }
- .countries-list > .collection-item span {
-  margin: 10px 0px;
-  width: 120px;
-  display: inline-block;
-  text-align: center;
- }
- .countries-list > .collection-item span:nth-child(1) {
-  width: 35px;
-  font-weight: bold;  
-  padding: 0px 0px;
-  margin: 0px 0px;
-  overflow: hidden;
-}
-
-.countries-list > .collection-item span:nth-child(2) {
-  width: 200px;
-  margin: 10px 0px;
-}
-
-
-@media  screen and (min-width: 599px){
-  .countries-list > .collection-item {
-    display: inline-block;
-    overflow-x: none; 
-  }
-}
- @media screen and (max-width: 599px){
-  .countries-list {
-    /* display: flex; 
-   } 
- 
- } */
-
-
-table {
-  width:100%;
-  position: relative;
-  table-layout: fixed;
-  height: 700px;
-
-
-}
-
-tbody, thead {
-  display:block;
-}
-tbody tr {
-  display:table;
-}
-
-tbody  {
-  height: 700px;
-}
-
-tbody > tr > td,thead > tr > th{
-  width: 170px;
-}
-tbody > tr > td:nth-child(1),thead > tr > th:nth-child(1){
-  width: 30px;
-}
-tbody > tr > td:nth-child(2),thead > tr > th:nth-child(2){
-  width: 170px;
-}
-
-
-
-
-thead > tr>th{
-  position: sticky;
-
-} 
-
-
-thead > tr {
-  position: relative;
-
-}
-
-@media  screen and (max-width: 599px){
-  thead > tr > th {
-    font-size: 11px;
-  }
-  tbody > tr > td {
-    font-size: 11px;
-  }
-  tbody, thead {
-    display:block;
-    width:95vw;
-    overflow-x:auto;
-  }
-  tbody tr {
-    display:table;
-    overflow-x:auto;
-    width:95vw;
-  }
-  thead > tr > th:nth-child(1){
-    width: 10px;
-  }
-}
-input[type="checkbox"] + span{
-  color: #484848 !important;
 }

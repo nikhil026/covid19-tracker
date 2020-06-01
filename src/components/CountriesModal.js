@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button, Modal, Row } from 'react-materialize';
+import { Button, Icon, Modal, Row } from 'react-materialize';
 import { useHistory } from 'react-router-dom';
 import { ModalContentContext, ModalContext } from '../App';
 import { CountriesModalContent } from './CountriesModalContent';
@@ -33,21 +33,22 @@ export const CountriesModal = (props) => {
 
     return (
         <Modal
-            style={{ width: '100%', maxHeight: '150%', ...styles.modal, overflow: 'hidden', color: '#484848' }}
+            style={styles.modal}
             open={countryModalOpen}
             fixedFooter={true}
-            bottomSheet={true}
-            options={{
-                onCloseEnd: closeModal
-            }
-            }
+            options={{ onCloseEnd: closeModal }}
             actions={<>
                 <Button waves="light" className="red darken-2 pink" onClick={onClearModal}>Clear</Button>
                 <Button style={styles.footerButton} className='green' onClick={onCompareSubmit}>Compare</Button>
-
             </>}
-        ><Button style={styles.footerButton} modal="close" waves="light" className="red darken-2 right" onClick={closeModal}>Close</Button>
-            <h6 style={{ marginTop: -15, textAlign: 'center' }}>Select Countries (Min: 2, Max: 12)</h6>
+        >
+            <Button
+                modal="close"
+                className="white right material-icons browser-default"
+                onClick={closeModal}
+                style={styles.closeButton}>
+                <Icon className="modal-icons black-text center">close</Icon>
+            </Button>
             <Row>
                 <CountriesModalContent countries={props.countries} />
             </Row>
@@ -61,9 +62,22 @@ const styles = {
         fontFamily: 'montserrat',
         fontSize: 14,
         color: '#484848 !important',
-        textTransform: 'capitalize'
+        textTransform: 'capitalize',
+        borderRadius: 30,
+        width: window.innerWidth > 600 ? '70%' : '100%',
+        height: window.innerHeight > 600 ? '100%' : '170%'
     },
     footerButton: {
-        marginLeft: 20
+        marginLeft: 20,
+        cursor: 'pointer'
+    },
+    closeButton: {
+        borderRadius: 40,
+        height: 40,
+        width: 40,
+        top: 0,
+        padding: 0,
+        marginTop: -30,
+        zIndex: 10000
     }
 }

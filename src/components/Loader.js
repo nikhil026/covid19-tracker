@@ -3,16 +3,10 @@ import React from 'react';
 export const Loader = (props) => {
     return (
         <div className={props.center ? 'center' : ''} style={props.style}>
-            <div className="preloader-wrapper small active center">
-                <div className="spinner-layer spinner-green-only">
-                    <div className="circle-clipper left">
-                        <div className="circle"></div>
-                    </div><div className="gap-patch">
-                        <div className="circle"></div>
-                    </div><div className="circle-clipper right">
-                        <div className="circle"></div>
-                    </div>
-                </div>
+            <div className="spinner">
+                <div style={{ backgroundColor: props.color }} className="bounce1"></div>
+                <div style={{ backgroundColor: props.color }} className="bounce2"></div>
+                <div style={{ backgroundColor: props.color }} className="bounce3"></div>
             </div>
         </div>
     )

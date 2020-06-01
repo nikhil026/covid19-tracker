@@ -4,18 +4,18 @@ import { NavLink } from 'react-router-dom';
 import CoronaImage from './../corona.png';
 
 export const Header = () => {
+
     let brand = (<NavLink to="/"> <img alt='Corona Stats Tracker' style={style.logoImage} className='brand-logo' src={CoronaImage} /></NavLink>);
 
     return (
         <Row>
             <Navbar style={style.navStyle} brand={brand} className="col l10 offset-l1 s12 offset-s0 black-text">
                 <NavLink exact={true} style={style.navLinkColor} to="/">Home</NavLink>
-                <NavLink activeClassName="active-link" style={style.navLinkColor} to="/country">Country</NavLink>
+                <NavLink activeClassName="active-link" style={style.navLinkColor} to="/country/india">Country</NavLink>
                 <NavLink activeClassName="active-link" style={style.navLinkColor} to="/compare-countries/compare">Compare</NavLink>
-                <NavLink activeClassName="active-link" style={style.navLinkColor} to="/india">India</NavLink>
+                <NavLink activeClassName="active-link" style={style.navLinkColor} to="/corona-india-statewise">India<span className="new badge pink"></span>
+                </NavLink>
             </Navbar>
-
-
         </Row>
     )
 }

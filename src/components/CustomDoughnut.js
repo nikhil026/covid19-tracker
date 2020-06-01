@@ -18,14 +18,17 @@ export const CustomDoughnut = (props) => {
 
                 labels: props.labels,
 
+
             }}
             options={{
                 responsive: true,
                 legend: {
+                    position: 'bottom',
                     labels: {
                         fontColor: props.textColor || '#fff',
                     }
-                }
+                },
+
             }}
         />
     )

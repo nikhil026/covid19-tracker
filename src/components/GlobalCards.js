@@ -11,18 +11,18 @@ export const GlobalCards = (props) => {
         return <Loader style={{ margin: 50 }} center={true} />
     }
     return (
-        <Row style={style.globalCardsRow}>
+        <Row style={styles.globalCardsRow}>
             <Col l={6} s={12} >
-                <div className="card hoverable z-depth-1" style={{ ...style.globalCard, ...style.totalGlobalCardBgColor }}>
+                <div className="card hoverable z-depth-1" style={{ ...styles.globalCard, ...styles.totalGlobalCardBgColor }}>
                     <Row>
                         <h5>Total Cases </h5>
-                        <span className='small-text'> (as of {new Date().toLocaleDateString()})</span>
+                        <span style={styles.dateSpan} className='small-text'> (as of {new Date().toLocaleDateString()})</span>
 
                         <h4>{TotalConfirmed.toLocaleString()}</h4>
                     </Row>
                     <Row className="row">
                         <Col l={6} s={12}>
-                            <div className="green" style={style.globalCardRecoveredAndDeath}>
+                            <div className="green" style={styles.globalCardRecoveredAndDeath}>
 
                                 <h6>Total Recovered</h6>
                                 <h5>{TotalRecovered.toLocaleString()}</h5>
@@ -30,7 +30,7 @@ export const GlobalCards = (props) => {
                             </div>
                         </Col>
                         <div className="col l6  s12">
-                            <div className="red" style={style.globalCardRecoveredAndDeath}>
+                            <div className="red" style={styles.globalCardRecoveredAndDeath}>
                                 <h6>Total Deaths</h6>
                                 <h5>{TotalDeaths.toLocaleString()}</h5>
                             </div>
@@ -44,22 +44,21 @@ export const GlobalCards = (props) => {
                         labels={['Active Cases', 'Recovered', 'Deaths']}
                         backgroundColor={['#00f', '#0f0', '#f00']}
                         borderColor='#fff'
-
                     />
                 </div>
             </Col>
             <Col l={6} s={12}>
-                <div className="card hoverable z-depth-1" style={{ ...style.globalCard, ...style.newGlobalCardBgColor }}>
+                <div className="card hoverable z-depth-1" style={{ ...styles.globalCard, ...styles.newGlobalCardBgColor }}>
                     <div className="row">
                         <h5>New Cases</h5>
-                        <span className='small-text'> (on {new Date(new Date().getTime() - 86400000).toLocaleDateString()})</span>
+                        <span style={styles.dateSpan} className='small-text'> (on {new Date(new Date().getTime() - 86400000).toLocaleDateString()})</span>
 
 
                         <h4>{NewConfirmed.toLocaleString()}</h4>
                     </div>
                     <Row>
                         <Col l={6} s={12}>
-                            <div className="green" style={style.globalCardRecoveredAndDeath}>
+                            <div className="green" style={styles.globalCardRecoveredAndDeath}>
 
                                 <h6>Recovered</h6>
                                 <h5>{NewRecovered.toLocaleString()}</h5>
@@ -67,7 +66,7 @@ export const GlobalCards = (props) => {
                             </div>
                         </Col>
                         <div className="col l6 s12">
-                            <div className="red" style={style.globalCardRecoveredAndDeath}>
+                            <div className="red" style={styles.globalCardRecoveredAndDeath}>
                                 <h6>New Deaths</h6>
                                 <h5>{NewDeaths.toLocaleString()}</h5>
                             </div>
@@ -85,12 +84,10 @@ export const GlobalCards = (props) => {
                     />
                 </div>
             </Col>
-        </Row>
-
-    )
+        </Row>);
 }
 
-const style = {
+const styles = {
     globalCardsRow: {
         marginTop: 10,
         float: 'center'
@@ -102,7 +99,6 @@ const style = {
         paddingBottom: 0,
         color: '#fff',
         textAlign: 'center'
-        // padding: 10
     },
     globalCardRecoveredAndDeath: {
         borderRadius: 20,
@@ -115,6 +111,11 @@ const style = {
     },
     newGlobalCardBgColor: {
         backgroundImage: 'linear-gradient(135deg, #F36265 0%,#961276 100%)'
+    },
+    dateSpan: {
+        marginTop: -10,
+        marginBottom: -15,
+        display: 'block'
     }
 }
 

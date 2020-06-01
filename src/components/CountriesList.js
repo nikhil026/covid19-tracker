@@ -37,35 +37,43 @@ export const CountriesList = (props) => {
             }
         </tbody>)
     }
-
-    // const renderArrow = () => {
-    //     if (props.sortDirection === 1) {
-    //         return (
-    //             <i onClick={props.onSortReverse} className="material-icons" style={styles.arrowStyle}>arrow_drop_up</i>)
-
-    //     } else {
-    //         return (<i onClick={props.onSortReverse} className="material-icons" style={styles.arrowStyle}>arrow_drop_down</i>
-    //         )
-    //     }
-    // }
+    const renderSelectButton = (sortBy, onSortChange) => {
+        return (
+            <select style={styles.selectButton} value={sortBy} className="browser-default" onChange={onSortChange}>
+                <option disabled defaultValue>Sort By</option>
+                <option value='Slug'>Sort ByName</option>
+                <option value='TotalConfirmed'>Total Cases</option>
+                <option value='TotalDeaths'>Total Deaths</option>
+                <option value='TotalRecovered'>Total Recovered</option>
+                <option value='NewConfirmed'>New Cases</option>
+                <option value='NewDeaths'>New Deaths</option>
+                <option value='NewRecovered'>New Recovered</option>
+            </select>
+        )
+    }
     return (
-        <table style={{ marginTop: 10 }}>
-            <thead>
-                <tr>
-                    <th>S.No</th>
-                    <th>Country</th>
-                    <th>Total Cases</th>
-                    <th>Total Death</th>
-                    <th>Total Recov.</th>
-                    <th>New Cases</th>
-                    <th>New Deaths</th>
-                    <th>New Recov.</th>
-                </tr>
-            </thead>
+        <div>
 
-            {renderList(props.countries, props.sortBy, props.sortDirection)}
+            {renderSelectButton(props.sortBy, props.onSortChange)}
 
-        </table>
+            <table className="country-list-table" style={{ marginTop: 10 }}>
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Country</th>
+                        <th>Total Cases</th>
+                        <th>Total Death</th>
+                        <th>Total Recov.</th>
+                        <th>New Cases</th>
+                        <th>New Deaths</th>
+                        <th>New Recov.</th>
+                    </tr>
+                </thead>
+
+                {renderList(props.countries, props.sortBy, props.sortDirection)}
+
+            </table>
+        </div>
     )
 }
 
@@ -86,5 +94,8 @@ const styles = {
     },
     arrowStyle: {
         cursor: 'pointer'
+    },
+    selectButton: {
+        marginTop: 10
     }
 }
