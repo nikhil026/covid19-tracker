@@ -5,7 +5,7 @@ const https = require('https');
 const app = express();
 const mcache = require('memory-cache');
 
-app.use(express.static(path.join(__dirname, './../build')));
+app.use(express.static(path.join(__dirname, './build')));
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -30,7 +30,7 @@ const cache = (duration) => {
 }
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, './../build', 'index.html'));
+    res.sendFile(path.join(__dirname, './build', 'index.html'));
 });
 
 app.get('/api/covid19/india', cache(20), function (req, resp) {
