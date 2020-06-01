@@ -99,9 +99,11 @@ app.get('/api/covid19/india', cache(20), function (req, resp) {
         console.error(`Got error: ${e.message}`);
         return resp.send('Server Error')
     });
-    app.get('/*', function (req, res) {
-        res.sendFile(path.join(__dirname, './../build', 'index.html'));
-    });
-})
+});
+
+
+app.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, './build', 'index.html'));
+});
 
 app.listen(process.env.PORT || 8080);
