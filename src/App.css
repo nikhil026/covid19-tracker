@@ -3,7 +3,18 @@ html {
 }
 .App {
   font-family: 'Montserrat', sans-serif;
+  min-height: 80vh;
 }
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+    
 .no-shadows {
   box-shadow: none!important;
 }
@@ -70,9 +81,7 @@ table.country-list-table  {
   display:table;
 }
 
-.country-list-table tbody  {
-  height: 700px;
-}
+
 
 .country-list-table tbody > tr > td, .country-list-table thead > tr > th{
   width: 170px;
@@ -104,11 +113,14 @@ table.country-list-table  {
   .country-list-table tbody, .country-list-table thead {
     display:block;
     width:100vw;
-    overflow-x:auto;
+    overflow:scroll;
+  }
+  .country-list-table tbody  {
+    height: 700px;
   }
   .country-list-table tbody tr {
     display:table;
-    overflow-x:auto;
+    overflow-x:scroll;
     width:100vw;
   }
   .country-list-table thead > tr > th:nth-child(1){

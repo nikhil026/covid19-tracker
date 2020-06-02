@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { fetchSummaryData } from '../api/api';
 import { ModalContentContext } from '../App';
 import { CompareCountriesBar } from '../components/CompareCountriesBar';
+import { CompareCountryButton } from '../components/CompareCountryButton';
 import { CountriesModal } from '../components/CountriesModal';
-import { CompareCountryButton } from './CompareCountryButton';
 
 
 export const CompareCountries = (props) => {

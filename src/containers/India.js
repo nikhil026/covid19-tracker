@@ -3,9 +3,9 @@ import { Bar } from 'react-chartjs-2';
 import { Col, Row } from 'react-materialize';
 import { fetchIndianStatesData } from '../api/api';
 import { indiaStateAndUTAutoComplete } from '../utils';
-import { CustomDoughnut } from './CustomDoughnut';
-import { Loader } from './Loader';
-import { SearchBar } from './SearchBar';
+import { CustomDoughnut } from './../components/CustomDoughnut';
+import { Loader } from './../components/Loader';
+import { SearchBar } from './../components/SearchBar';
 
 export const India = () => {
     const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
