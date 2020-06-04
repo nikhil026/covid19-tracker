@@ -153,25 +153,8 @@ export const Country = (props) => {
             return <Loader color='#fff' />
         return (<>
 
-            <Col className="center" l={6} s={12} style={styles.doughnutContainer}>
-                <Row className="card" style={styles.doughnutContainer}>
-                    <h6 style={{ fontWeight: 'bold', color: '#484848' }}>Covid19 Cases {countryName}</h6>
-                    <CustomDoughnut
-                        data={[
-                            TotalActive,
-                            TotalRecovered,
-                            TotalDeaths]
-                        }
-                        labels={[`Active Cases: ${TotalActive}`, `Recovered: ${TotalRecovered}`, `Deaths: ${TotalDeaths}`]}
-                        backgroundColor={['#00f', '#0f0', '#f00']}
-                        borderColor='#fff'
-                        textColor='#333'
-                    />
-                </Row>
 
-            </Col>
-
-            <Col l={6} s={12} style={{ padding: 15 }}>
+            <Col l={12} s={12} style={{ padding: 15 }}>
                 <Row className="card" style={{ borderRadius: 20, padding: 5 }}>
                     <Col l={6} s={12} style={{ paddingTop: 10, marginTop: 5, marginBottom: 20, float: 'center' }}>
                         <Switch
@@ -187,6 +170,24 @@ export const Country = (props) => {
 
                     </Col>
                     {renderLineGraph()}
+                </Row>
+
+            </Col>
+
+            <Col className="center" l={12} s={12} style={styles.doughnutContainer}>
+                <Row className="card" style={styles.doughnutContainer}>
+                    <h6 style={{ fontWeight: 'bold', color: '#484848' }}>Covid19 Cases {countryName}</h6>
+                    <CustomDoughnut
+                        data={[
+                            TotalActive,
+                            TotalRecovered,
+                            TotalDeaths]
+                        }
+                        labels={[`Active Cases: ${TotalActive}`, `Recovered: ${TotalRecovered}`, `Deaths: ${TotalDeaths}`]}
+                        backgroundColor={['#00f', '#0f0', '#f00']}
+                        borderColor='#fff'
+                        textColor='#333'
+                    />
                 </Row>
 
             </Col>

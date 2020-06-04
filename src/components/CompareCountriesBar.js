@@ -1,10 +1,10 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
-
+import { scaleHighDigits } from '../utils';
 
 export const CompareCountriesBar = (props) => {
     let common = {
-        barThickness: 15
+        barThickness: 5
     }
     let labels = [],
         data1 = { data: [], label: 'Total Cases', backgroundColor: '#00f', ...common },
@@ -31,13 +31,17 @@ export const CompareCountriesBar = (props) => {
                 },
                 scales: {
                     yAxes: [{
-                        stacked: true
+                        ticks: {
+                            callback: scaleHighDigits
+                        }
+                        // stacked: true
                     }],
                     xAxes: [{
-                        stacked: true
+                        // stacked: true
                     }]
                 },
             }}
         />
+
     )
 }

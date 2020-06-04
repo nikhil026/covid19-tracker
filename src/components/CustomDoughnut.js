@@ -21,6 +21,7 @@ export const CustomDoughnut = (props) => {
 
             }}
             options={{
+                cutoutPercentage: 10,
                 responsive: true,
                 legend: {
                     position: 'bottom',

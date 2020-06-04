@@ -44,3 +44,34 @@ export const commonConfigForLineGraph = {
     pointRadius: 1,
     pointHitRadius: 10
 }
+
+
+export const createDynamicColorArray = (arraySize) => {
+
+    let dynamicColorsArray = [];
+
+
+    for (let i = 0; i < arraySize; i++) {
+        let r = Math.floor(Math.random() * 255);
+        let g = Math.floor(Math.random() * 255);
+        let b = Math.floor(Math.random() * 255);
+        dynamicColorsArray.push(`rgb(${r},${g},${b})`)
+    }
+    return dynamicColorsArray;
+}
+
+export const scaleHighDigits = value => {
+    var ranges = [
+        { divider: 1e6, suffix: 'M' },
+        { divider: 1e3, suffix: 'k' }
+    ];
+    function formatNumber(n) {
+        for (var i = 0; i < ranges.length; i++) {
+            if (n >= ranges[i].divider) {
+                return (n / ranges[i].divider).toString() + ranges[i].suffix;
+            }
+        }
+        return n;
+    }
+    return formatNumber(value);
+}

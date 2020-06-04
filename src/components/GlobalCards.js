@@ -1,6 +1,5 @@
 import React from 'react';
 import { Col, Row } from 'react-materialize';
-import { CustomDoughnut } from './CustomDoughnut';
 import { Loader } from './Loader';
 
 
@@ -22,7 +21,7 @@ export const GlobalCards = (props) => {
                     </Row>
                     <Row className="row">
                         <Col l={6} s={12}>
-                            <div className="green" style={styles.globalCardRecoveredAndDeath}>
+                            <div className="green lighten-1" style={styles.globalCardRecoveredAndDeath}>
 
                                 <h6>Total Recovered</h6>
                                 <h5>{TotalRecovered.toLocaleString()}</h5>
@@ -37,14 +36,6 @@ export const GlobalCards = (props) => {
                         </div>
                     </Row>
 
-                    <CustomDoughnut data={
-                        [TotalConfirmed - TotalRecovered - TotalDeaths,
-                            TotalRecovered,
-                            TotalDeaths]}
-                        labels={['Active Cases', 'Recovered', 'Deaths']}
-                        backgroundColor={['#00f', '#0f0', '#f00']}
-                        borderColor='#fff'
-                    />
                 </div>
             </Col>
             <Col l={6} s={12}>
@@ -58,7 +49,7 @@ export const GlobalCards = (props) => {
                     </div>
                     <Row>
                         <Col l={6} s={12}>
-                            <div className="green" style={styles.globalCardRecoveredAndDeath}>
+                            <div className="green lighten-1" style={styles.globalCardRecoveredAndDeath}>
 
                                 <h6>Recovered</h6>
                                 <h5>{NewRecovered.toLocaleString()}</h5>
@@ -73,15 +64,6 @@ export const GlobalCards = (props) => {
                         </div>
                     </Row>
 
-                    <CustomDoughnut data={
-                        [NewConfirmed - NewRecovered - NewDeaths,
-                            NewRecovered,
-                            NewDeaths]}
-                        labels={['New Cases', 'New Recovered', 'New Deaths']}
-                        backgroundColor={['#00f', '#0f0', '#f00']}
-                        borderColor='#fff'
-
-                    />
                 </div>
             </Col>
         </Row>);
@@ -103,14 +85,15 @@ const styles = {
     globalCardRecoveredAndDeath: {
         borderRadius: 20,
         padding: 5,
-        margin: 5
+        margin: 5,
+        marginBottom: 10
     },
     totalGlobalCardBgColor: {
-        backgroundImage: 'linear-gradient(135deg, #CE9FFC 0%,#7367F0 100%)',
+        background: 'linear-gradient(135deg, #f65599 0%,#4d0316 100%)'
 
     },
     newGlobalCardBgColor: {
-        backgroundImage: 'linear-gradient(135deg, #F36265 0%,#961276 100%)'
+        background: 'linear-gradient(135deg, #C56CD6 0%,#3425AF 100%)'
     },
     dateSpan: {
         marginTop: -10,
@@ -118,4 +101,3 @@ const styles = {
         display: 'block'
     }
 }
-

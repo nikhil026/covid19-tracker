@@ -9,7 +9,7 @@ export const FooterComponent = () => {
             }}
 
             copyrights={
-                <p class="center" style={{ padding: 0, marginTop: -15, marginBottom: -5 }}>Designed and Developed By: <a href="https://github.com/nikhil026/covid19-tracker">Nikhil Gupta</a>
+                <p className="center" style={{ padding: 0, marginTop: -15, marginBottom: -5 }}>Designed and Developed By: <a href="https://github.com/nikhil026/covid19-tracker">Nikhil Gupta</a>
                 &nbsp;&nbsp;
                     <br />
                    Created using React, Chart.js, MaterializeCSS and lots of &nbsp;<i style={styles.heartIcon} className="red material-icons red red">favorite</i>
