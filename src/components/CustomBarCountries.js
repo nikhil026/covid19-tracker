@@ -9,7 +9,7 @@ import { createDynamicColorArray, scaleHighDigits } from '../utils/index';
 export const CustomBarCountries = (props) => {
 
     const history = useHistory();
-    let barThickness = 2;
+    // let barThickness = 2;
     let defaultOptionsforBar = {
         maintainAspectRatio: false,
         scales: {
@@ -51,6 +51,7 @@ export const CustomBarCountries = (props) => {
     const [noOfCustomBarCountries, setCustomBarCountries] = React.useState(10);
 
     const onNoOfCustomBarCountriesChange = (val) => () => {
+        if(!(noOfCustomBarCountries===1 && val===-1) && !(noOfCustomBarCountries===30 && val===1))
         setCustomBarCountries(noOfCustomBarCountries + val);
     }
 
@@ -79,12 +80,13 @@ export const CustomBarCountries = (props) => {
                 padding: 5,
             }}>
                 <Col l={3}></Col>
-                <Col l={4} s={10}>
+                <Col l={4} s={9}>
                     <h5 style={{ color: '#333' }} className="center">{noOfCustomBarCountries} Most Affected Countries</h5>
                 </Col>
-                <Col l={2} s={2}>
-                    <i class="medium material-icons" onClick={onNoOfCustomBarCountriesChange(1)}>arrow_upward</i>
-                    <i class="medium material-icons" onClick={onNoOfCustomBarCountriesChange(-1)}>arrow_downward</i>
+                <Col l={2} s={2} style={{paddingTop:'15px'}}>
+
+                    <i class="material-icons" onClick={onNoOfCustomBarCountriesChange(1)}>arrow_upward</i>
+                    <i class="material-icons" onClick={onNoOfCustomBarCountriesChange(-1)}>arrow_downward</i>
                 </Col>
                 <Col l={3}></Col>
                 <br />
