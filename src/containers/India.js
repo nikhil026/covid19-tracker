@@ -75,9 +75,9 @@ export const India = () => {
                         selectedStateData.TotalRecovered,
                         selectedStateData.TotalDeaths]}
                         labels={[
-                            `Active Cases: ${selectedStateData.TotalActive}`,
-                            `Recovered: ${selectedStateData.TotalRecovered}`,
-                            `Deaths: ${selectedStateData.TotalDeaths}`
+                            `Active Cases`,
+                            `Recovered`,
+                            `Deaths`
                         ]}
                         backgroundColor={['#00f', '#0f0', '#f00']}
                         borderColor='#fff'

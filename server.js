@@ -12,6 +12,7 @@ app.use(function (req, res, next) {
     next();
 });
 
+// Setting up caching
 const cache = (duration) => {
     return (req, res, next) => {
         let key = '_express_' + req.originalUrl || req.url;
@@ -29,12 +30,7 @@ const cache = (duration) => {
     }
 }
 
-app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, './build', 'index.html'));
-});
-
 app.get('/api/covid19/india', cache(20), function (req, resp) {
-    console.log('came here');
     // Fetch health ministry data from their website
     https.get('https://www.mohfw.gov.in', (res) => {
         const { statusCode } = res;
@@ -100,7 +96,6 @@ app.get('/api/covid19/india', cache(20), function (req, resp) {
         return resp.send('Server Error')
     });
 });
-
 
 app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname, './build', 'index.html'));

@@ -66,6 +66,5 @@ export const Home = () => {
 }
 
 const styles = {
-    countryListHeader: {
-    }
+
 }

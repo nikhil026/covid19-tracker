@@ -111,7 +111,6 @@ export const Country = (props) => {
                 value={selectedTime}
                 className="browser-default"
                 onChange={onSelectTimePeriodChange}>
-                >
                 <option disabled defaultValue>Time Period</option>
                 <option value={10000}>Overall</option>
                 <option value={8}>Last Week</option>
@@ -183,7 +182,7 @@ export const Country = (props) => {
                             TotalRecovered,
                             TotalDeaths]
                         }
-                        labels={[`Active Cases: ${TotalActive}`, `Recovered: ${TotalRecovered}`, `Deaths: ${TotalDeaths}`]}
+                        labels={[`Active Cases`, `Recovered`, `Deaths`]}
                         backgroundColor={['#00f', '#0f0', '#f00']}
                         borderColor='#fff'
                         textColor='#333'

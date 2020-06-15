@@ -59,7 +59,9 @@ i {
 .reversed-icon {
   transform: rotate(180deg);
 }
-
+.cursor-pointer{
+  cursor: pointer;
+}
 
 
 .App-header {

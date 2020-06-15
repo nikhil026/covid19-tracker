@@ -6,6 +6,9 @@
 .pnp.js
 cb_code
 
+#code-editor
+.vscode
+
 # testing
 /coverage
 

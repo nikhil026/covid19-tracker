@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Bar, HorizontalBar } from 'react-chartjs-2';
 import { Col, Row } from 'react-materialize';
 import { useHistory } from 'react-router-dom';
 import { createDynamicColorArray, scaleHighDigits } from '../utils/index';
 
-
-
 export const CustomBarCountries = (props) => {
 
     const history = useHistory();
-    let barThickness = 2;
+
+
     let defaultOptionsforBar = {
         maintainAspectRatio: false,
         scales: {
@@ -48,21 +47,55 @@ export const CustomBarCountries = (props) => {
         }
     }
 
+    const countries = [...props.countries];
+    const dynamicBackgroundArray = createDynamicColorArray(50);
 
-    let countries = [...props.countries];
-    let labels = countries.slice(0, 15).map(counry => counry.Slug);
-    let dynamicBackgroundArray = createDynamicColorArray(50);
-    let barsData = [
-        { label: 'Confirmed', data: countries.slice(0, 15).map(country => country.TotalConfirmed) },
-        { label: 'Recovered', data: countries.slice(0, 15).map(country => country.TotalRecovered) },
-        { label: 'Deaths', data: countries.slice(0, 15).map(country => country.TotalDeaths) },
-    ];
+
+    const [noOfCustomBarCountries, setCustomBarCountries] = useState(10);
+    const [labels, setLabels] = useState(countries.slice(0, noOfCustomBarCountries).map(country => country.Slug));
+    const [barsData, setBarsData] = useState([
+        { label: 'Confirmed', data: countries.slice(0, noOfCustomBarCountries).map(country => country.TotalConfirmed) },
+        { label: 'Recovered', data: countries.slice(0, noOfCustomBarCountries).map(country => country.TotalRecovered) },
+        { label: 'Deaths', data: countries.slice(0, noOfCustomBarCountries).map(country => country.TotalDeaths) },
+    ]);
+
+
+    const onNoOfCustomBarCountriesChange = (val) => () => {
+        if (!(noOfCustomBarCountries === 1 && val === -1) && !(noOfCustomBarCountries === 30 && val === 1))
+            setCustomBarCountries(noOfCustomBarCountries + val);
+    }
+
+    useEffect(() => {
+        setLabels(countries.slice(0, noOfCustomBarCountries).map(country => country.Slug));
+        setBarsData([
+            { label: 'Confirmed', data: countries.slice(0, noOfCustomBarCountries).map(country => country.TotalConfirmed) },
+            { label: 'Recovered', data: countries.slice(0, noOfCustomBarCountries).map(country => country.TotalRecovered) },
+            { label: 'Deaths', data: countries.slice(0, noOfCustomBarCountries).map(country => country.TotalDeaths) },
+        ]);
+    }, [noOfCustomBarCountries])
+
+
     return (
         <>
             <Row style={{
                 padding: 5,
             }}>
-                <h5 style={{ color: '#333' }} className="center">15 Most effected countries</h5>
+                <Col l={3}></Col>
+                <Col l={4} s={9}>
+                    <h5 style={{ color: '#333' }} className="center">{noOfCustomBarCountries} Most Affected Countries</h5>
+                </Col>
+                <Col l={2} s={2} style={{ paddingTop: '15px' }}>
+
+                    <i className="material-icons cursor-pointer" onClick={onNoOfCustomBarCountriesChange(1)}>add_box</i>
+                    <i className="material-icons cursor-pointer" onClick={onNoOfCustomBarCountriesChange(-1)}>indeterminate_check_box</i>
+                </Col>
+                <Col l={3}></Col>
+                <br />
+            </Row>
+
+            <Row style={{
+                padding: 5,
+            }}>
 
                 {
                     barsData.map((barData, index) => {
@@ -76,7 +109,7 @@ export const CustomBarCountries = (props) => {
                                                 label: 'Total Cases',
                                                 data: barData.data,
                                                 backgroundColor: dynamicBackgroundArray,
-                                                barThickness
+                                                barThickness: 5
 
                                             }],
                                             labels
@@ -104,7 +137,7 @@ export const CustomBarCountries = (props) => {
                                     {
                                         data: countries.sort((a, b) => b.NewConfirmed - a.NewConfirmed).slice(0, 10).map(country => country.NewConfirmed),
                                         backgroundColor: createDynamicColorArray(15),
-                                        barThickness: 2
+                                        barThickness: 7
 
                                     }
                                 ],

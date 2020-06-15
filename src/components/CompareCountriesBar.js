@@ -34,10 +34,6 @@ export const CompareCountriesBar = (props) => {
                         ticks: {
                             callback: scaleHighDigits
                         }
-                        // stacked: true
-                    }],
-                    xAxes: [{
-                        // stacked: true
                     }]
                 },
             }}
