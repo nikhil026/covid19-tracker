@@ -36,15 +36,15 @@ export const fetchCountryAllData = async (countryName) => {
 
 export const fetchIndianStatesData = async () => {
   try {
-    if (JSON.parse(window.localStorage["IndianStatesData"]).timeStamp + inCacheTime > new Date().getTime()) {
-      return JSON.parse(window.localStorage["IndianStatesData"])['data'];
+    if (JSON.parse(window.localStorage['indianData']).timeStamp + inCacheTime > new Date().getTime()) {
+      return JSON.parse(window.localStorage['indianData']);
     } else {
       throw new Error('Old')
     }
   } catch (e) {
-    let result = await getAPI(`/api/covid19/india/`);
-    let countryData = { data: result, timeStamp: new Date().getTime() };
-    window.localStorage.setItem("IndianStatesData", JSON.stringify(countryData));
+    let result = await getAPI(`https://www.mohfw.gov.in/data/datanew.json`);
+    window.localStorage.setItem('indianData', JSON.stringify({ ...result, timeStamp: new Date().getTime() }));
     return result;
   }
+
 }

@@ -20,7 +20,14 @@ export const India = () => {
 
     useEffect(() => {
         fetchIndianStatesData().then(data => {
-            setIndianStatesData(() => data);
+            const results = [];
+            Object.entries(data).forEach(([key, value])=>{
+                if(key !== "0" && !isNaN(Number(key)) && Number(key) < 37 && value["state_name"]){
+                    const {active, cured, death, state_name } = value;
+                    results.push({"State/UT": state_name, TotalActive: Number(active), TotalRecovered: Number(cured), TotalDeaths: Number(death)})
+                }
+            });
+            setIndianStatesData(results);
         });
     }, []);
 
